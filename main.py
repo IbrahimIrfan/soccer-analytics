@@ -20,7 +20,9 @@ while(True):
     im2, contours, hierarchy = cv2.findContours(blur, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     for cont in contours:
         area = cv2.contourArea(cont)
-        if area > 30 and area < 700:
+        if area > 30 and area < 70:
+            cv2.drawContours(frame, cont, -1, (0,255,0), 3)
+        if area >= 70 and area < 700:
             cv2.drawContours(frame, cont, -1, (0,0,255), 3)
 
     cv2.imshow("frame2", frame)
