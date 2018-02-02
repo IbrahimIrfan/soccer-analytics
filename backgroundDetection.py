@@ -1,11 +1,9 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture("data.mp4")
+cap = cv2.VideoCapture("data/data.mp4")
 w = cap.get(3)
 h = cap.get(4)
-
-out = cv2.VideoWriter('out.avi',cv2.VideoWriter_fourcc(*'XVID'), 10, 10, (int(w),int(h)))
 
 #cap = cv2.VideoCapture(0)
 fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -24,8 +22,6 @@ while(True):
         area = cv2.contourArea(cont)
         if area > 30 and area < 700:
             cv2.drawContours(frame, cont, -1, (0,0,255), 3)
-
-    out.write(frame)
 
     cv2.imshow("frame2", frame)
 
