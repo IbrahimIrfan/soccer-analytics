@@ -5,9 +5,8 @@ import os
 
 imgLocation = "~/Desktop/training/ref/"
 cropLocation = "training/ref/"
-w = 1440
-h = 900 
 
+# crop the picture centered around mouse using imagemagick
 def cropPic(x, y, id):
     left = x - 30
     top = y - 30
@@ -15,6 +14,7 @@ def cropPic(x, y, id):
     os.system(c1)
     os.system("rm -rf " + cropLocation + str(id) + ".jpg")
 
+# take a screenshot without sound and save to imgLocation
 def takePic(id):
     os.system("screencapture -x " + imgLocation + str(id) + ".jpg")
 
@@ -29,5 +29,6 @@ def begin():
         cropPic(x, y, id)
         id += 1
 
+# delay before start
 time.sleep(5)
 begin()
